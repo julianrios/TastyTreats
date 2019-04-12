@@ -1,4 +1,4 @@
-package com.julianrios.RecipeApplication.Entities;
+package com.julianrios.RecipeApplication.entities;
 
 public class User {
 
