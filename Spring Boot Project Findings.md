@@ -22,4 +22,26 @@ A simplified version of DAO(Data Access Object an object that provides an abstra
 A form of dependency injection(provides the objects that an object needs (its dependencies) instead of having it construct them itself) allows Spring to resolve and inject collaborating beans into your bean.
 
 ### What is an Optional?
-This is a class that was introduced in Java 8 and the purpose of the class is to provide a type-level solution for representing optional values instead of null references
+This is a class that was introduced in Java 8 and the purpose of the class is to provide a type-level solution for representing optional values instead of null references.
+
+### What is a ResponseEntity?
+ResponseEntity represents the whole HTTP response: status code, headers, and body. It can be used to fully configure the HTTP response. For it to be used we have to return it from the endpoint. ResponseEntity is a generic type. As a result, we can return any type as the response body. ResponseEntity provides two nested builder interfaces: we can access their capabilities through the static methods of ResponseEntity.
+
+### What is @RequestBody?
+This annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the HttpResponse object.
+
+### What is a HttpResponse?
+HTTP response: status code, headers, and body.
+
+### What is @PostMapping, @GetMapping, @PutMapping, @DeleteMapping?, @PatchMapping?
+All of the above annotations are already internally annotated with @RequestMapping and the respective value in the method element.
+
+### What is @RequestMapping?
+This annotation can be used with the class to create a base URI (Uniform Resource Identifier) a sequence of characters that allows the complete identification of any abstract or physical resource.
+
+### What is @PathVariable?
+This annotation can map the URI variable to one of the method arguments.
+
+### How do I handle incoming HTTP requests?
+Spring currently supports five types of inbuilt annotations for handling different types of incoming HTTP request methods which are GET, POST, PUT, DELETE and PATCH.
+
