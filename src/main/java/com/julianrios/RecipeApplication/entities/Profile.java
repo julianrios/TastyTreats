@@ -10,13 +10,13 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class User {
+public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String userName;
 
-    public User() {
+    public Profile() {
     }
 }
