@@ -8,15 +8,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Data
+
 @Entity
+@Data
 public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String userName;
 
     public Profile() {
+    }
+
+    public Profile(Integer id, String userName) {
+        this.id = id;
+        this.userName = userName;
     }
 }

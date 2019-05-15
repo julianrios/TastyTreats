@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/profiles")
@@ -17,23 +17,32 @@ public class ProfileController {
     ProfileService service;
 
     @PostMapping()
-    public ResponseEntity createProfile(@RequestBody Profile profile) {
-        service.createProfile(profile);
-        return new ResponseEntity(HttpStatus.CREATED);
+    public ResponseEntity<Profile> createProfile(@RequestBody Profile profile) {
+        return new ResponseEntity(service.createProfile(profile), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional> getProfile(@PathVariable("id") Long id) {
+    public ResponseEntity<Profile> getProfile(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(service.getProfile(id));
     }
 
     @GetMapping("/allProfiles")
-    public ResponseEntity getAllProfiles() {
-        return new ResponseEntity(service.getAllProfiles(), HttpStatus.OK);
+    public ResponseEntity<List> getAllProfiles() {
+        return ResponseEntity.ok(service.getAllProfiles());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteProfile(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteProfile(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(service.deleteProfile(id));
+    }
+
+    @DeleteMapping("/allProfiles")
+    public ResponseEntity<Boolean> deleteAllProfiles() {
+        return ResponseEntity.ok(service.deleteAllProfiles());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Profile> updateProfile(@PathVariable("id") Integer id, @RequestBody Profile profile) {
+        return new ResponseEntity(service.updateProfile(id, profile), HttpStatus.OK);
     }
 }

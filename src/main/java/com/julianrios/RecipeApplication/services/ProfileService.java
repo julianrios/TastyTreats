@@ -7,30 +7,44 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProfileService {
 
+    ProfileRepository repo;
+
     @Autowired
-    private ProfileRepository repo;
-
-    private List profiles = new ArrayList();
-
-    public void createProfile(Profile profile) {
-        repo.save(profile);
+    public ProfileService(ProfileRepository repo) {
+        this.repo = repo;
     }
 
-    public Optional<Profile> getProfile(Long id) {
-        return repo.findById(id);
+    public Profile createProfile(Profile profile) {
+        return repo.save(profile);
     }
 
-    public List<Profile> getAllProfiles() {
-        profiles = repo.findAll();
-        return profiles;
+    public Profile updateProfile(Integer id, Profile updatedProfile) {
+        Profile profile = repo.findById(id).get();
+        profile.setUserName(updatedProfile.getUserName());
+        profile.setId(updatedProfile.getId());
+
+        return repo.save(profile);
     }
 
-    public Boolean deleteProfile(Long id) {
-        return profiles.remove(profiles.get(id.intValue()));
+    public Profile getProfile(Integer id) {
+        return repo.findById(id).get();
+    }
+
+    public List getAllProfiles() {
+        return new ArrayList(repo.findAll());
+    }
+
+    public Boolean deleteProfile(Integer id) {
+        repo.deleteById(id);
+        return true;
+    }
+
+    public Boolean deleteAllProfiles() {
+        repo.deleteAll();
+        return true;
     }
 }
