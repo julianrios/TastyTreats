@@ -25,7 +25,6 @@ public class ProfileService {
     public Profile updateProfile(Integer id, Profile updatedProfile) {
         Profile profile = repo.findById(id).get();
         profile.setUserName(updatedProfile.getUserName());
-        profile.setId(updatedProfile.getId());
 
         return repo.save(profile);
     }
