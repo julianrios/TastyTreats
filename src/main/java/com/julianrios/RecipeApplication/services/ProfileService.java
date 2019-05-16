@@ -11,12 +11,8 @@ import java.util.List;
 @Service
 public class ProfileService {
 
-    ProfileRepository repo;
-
     @Autowired
-    public ProfileService(ProfileRepository repo) {
-        this.repo = repo;
-    }
+    private ProfileRepository repo;
 
     public Profile createProfile(Profile profile) {
         return repo.save(profile);
