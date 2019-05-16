@@ -43,6 +43,6 @@ public class ProfileController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Profile> updateProfile(@PathVariable("id") Integer id, @RequestBody Profile profile) {
-        return new ResponseEntity(service.updateProfile(id, profile), HttpStatus.OK);
+        return ResponseEntity.ok(service.updateProfile(id, profile));
     }
 }

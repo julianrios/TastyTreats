@@ -1,4 +1,3 @@
-
 package com.julianrios.RecipeApplication.entities;
 
 public class Recipe {
