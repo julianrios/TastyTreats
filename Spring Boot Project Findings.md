@@ -45,3 +45,16 @@ This annotation can map the URI variable to one of the method arguments.
 ### How do I handle incoming HTTP requests?
 Spring currently supports five types of inbuilt annotations for handling different types of incoming HTTP request methods which are GET, POST, PUT, DELETE and PATCH.
 
+
+
+
+
+
+
+
+
+
+
+
+### Common application properties
+Spring properties [https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html]
