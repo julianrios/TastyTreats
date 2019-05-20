@@ -1,4 +1,4 @@
-# couchPotato
+# TastyTreats
 Passion Project Idea 
 
 ## Apis
