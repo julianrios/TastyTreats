@@ -16,13 +16,13 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String userName;
+    private String profileName;
 
     public Profile() {
     }
 
-    public Profile(Integer id, String userName) {
+    public Profile(Integer id, String profileName) {
         this.id = id;
-        this.userName = userName;
+        this.profileName = profileName;
     }
 }
