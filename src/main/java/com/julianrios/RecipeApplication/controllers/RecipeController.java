@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
 @RestController
 @RequestMapping("/recipes")
 public class RecipeController {
@@ -27,7 +25,7 @@ public class RecipeController {
     }
 
     @GetMapping("/randomRecipe")
-    public ResponseEntity<String> getRandomRecipes() throws UnirestException, IOException {
+    public ResponseEntity<String> getRandomRecipes() throws UnirestException {
         return ResponseEntity.ok(service.getRandomRecipe());
     }
 
