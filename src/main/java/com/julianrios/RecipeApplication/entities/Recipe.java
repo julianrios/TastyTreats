@@ -2,10 +2,7 @@ package com.julianrios.RecipeApplication.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -20,14 +17,18 @@ public class Recipe {
     private String image;
     private String instructions;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private RecipeBook recipeBook;
+
     public Recipe() {
     }
 
-    public Recipe(String title, String readyInMinutes, Integer servings, String image, String instructions) {
+    public Recipe(String title, String readyInMinutes, Integer servings, String image, String instructions, RecipeBook recipeBook) {
         this.title = title;
         this.readyInMinutes = readyInMinutes;
         this.servings = servings;
         this.image = image;
         this.instructions = instructions;
+        this.recipeBook = recipeBook;
     }
 }
