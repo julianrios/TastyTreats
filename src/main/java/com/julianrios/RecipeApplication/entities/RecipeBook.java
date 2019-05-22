@@ -3,13 +3,13 @@ package com.julianrios.RecipeApplication.entities;
 
 import java.util.List;
 
-public class RecipeCollection {
+public class RecipeBook {
 
     private Integer id;
     private Recipe recipe;
-    private List<Recipe> recipesCollection;
+    private List<Recipe> recipeBook;
 
-    public RecipeCollection() {
+    public RecipeBook() {
     }
 
     public Integer getId() {
@@ -29,31 +29,31 @@ public class RecipeCollection {
     }
 
     public void add (Recipe recipe) {
-        recipesCollection.add(recipe);
+        recipeBook.add(recipe);
     }
 
     public Boolean delete (Recipe recipe) {
-        return recipesCollection.remove(recipe);
+        return recipeBook.remove(recipe);
     }
 
     public Recipe getRecipe(Recipe recipeToFind) {
-        for(Recipe recipe : recipesCollection) {
+        for(Recipe recipe : recipeBook) {
             if(recipe.equals(recipeToFind)) {
-                return recipesCollection.get(recipesCollection.indexOf(recipe));
+                return recipeBook.get(recipeBook.indexOf(recipe));
             }
         }
         throw new NullPointerException();
     }
 
     public Boolean containsRecipe(Recipe recipe) {
-        return recipesCollection.contains(recipe);
+        return recipeBook.contains(recipe);
     }
 
-    public List<Recipe> getRecipesCollection() {
-        return recipesCollection;
+    public List<Recipe> getRecipeBook() {
+        return recipeBook;
     }
 
-    public void setRecipesCollection(List<Recipe> recipesCollection) {
-        this.recipesCollection = recipesCollection;
+    public void setRecipeBook(List<Recipe> recipeBook) {
+        this.recipeBook = recipeBook;
     }
 }

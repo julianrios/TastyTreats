@@ -13,8 +13,13 @@ import java.util.List;
 @RequestMapping("/profiles")
 public class ProfileController {
 
+
+    private ProfileService service;
+
     @Autowired
-    ProfileService service;
+    public ProfileController(ProfileService service) {
+        this.service = service;
+    }
 
     @PostMapping()
     public ResponseEntity<Profile> createProfile(@RequestBody Profile profile) {
