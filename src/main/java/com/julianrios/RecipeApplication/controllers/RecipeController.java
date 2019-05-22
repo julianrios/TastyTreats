@@ -1,12 +1,12 @@
 package com.julianrios.RecipeApplication.controllers;
 
+import com.julianrios.RecipeApplication.entities.Recipe;
 import com.julianrios.RecipeApplication.services.RecipeService;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/recipes")
@@ -19,6 +19,17 @@ public class RecipeController {
         this.service = service;
     }
 
+
+    @PostMapping()
+    public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
+        return new ResponseEntity<>(service.createRecipe(recipe), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Recipe> getRecipe(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(service.getRecipe(id));
+    }
+
     @GetMapping()
     public ResponseEntity<Object> extractRecipeFromSite() throws UnirestException {
         return ResponseEntity.ok(service.extractRecipeFromSite());
@@ -28,5 +39,4 @@ public class RecipeController {
     public ResponseEntity<String> getRandomRecipes() throws UnirestException {
         return ResponseEntity.ok(service.getRandomRecipe());
     }
-
 }
