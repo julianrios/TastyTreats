@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/recipes")
+@CrossOrigin()
 public class RecipeController {
 
     private RecipeService service;
