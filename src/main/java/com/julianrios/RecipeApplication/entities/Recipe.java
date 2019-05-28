@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Recipe {
 
     @Id
+    @Column(name= "recipe_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
@@ -17,18 +18,21 @@ public class Recipe {
     private String image;
     private String instructions;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private RecipeBook recipeBook;
+    @Column(name = "profile_id")
+    private Integer profile_id;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private RecipeBook recipeBook;
 
     public Recipe() {
     }
 
-    public Recipe(String title, String readyInMinutes, Integer servings, String image, String instructions, RecipeBook recipeBook) {
+    public Recipe(String title, String readyInMinutes, Integer servings, String image, String instructions, Integer profile_id) {
         this.title = title;
         this.readyInMinutes = readyInMinutes;
         this.servings = servings;
         this.image = image;
         this.instructions = instructions;
-        this.recipeBook = recipeBook;
+        this.profile_id = profile_id;
     }
 }

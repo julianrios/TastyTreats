@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/recipes")
-@CrossOrigin()
+@CrossOrigin("*")
 public class RecipeController {
 
     private RecipeService service;
@@ -30,6 +30,13 @@ public class RecipeController {
     public ResponseEntity<Recipe> getRecipe(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(service.getRecipe(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteRecipe(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(service.deleteRecipe(id));
+    }
+
+    @DeleteMapping("")
 
     @GetMapping()
     public ResponseEntity<Object> extractRecipeFromSite() throws UnirestException {

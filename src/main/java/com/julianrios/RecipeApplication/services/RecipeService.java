@@ -30,6 +30,14 @@ public class RecipeService {
         return repo.findById(id).get();
     }
 
+    public Boolean deleteRecipe(Integer id) {
+        repo.deleteById(id);
+        if(repo.existsById(id)) {
+            return false;
+        }
+        return true;
+    }
+
     public Object extractRecipeFromSite() throws UnirestException {
         HttpResponse<JsonNode> response;
         String address = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract?url=https://www.recipetineats.com/oven-baked-chicken-and-rice/";
@@ -51,6 +59,5 @@ public class RecipeService {
 
         return response.getBody().getObject().toString();
     }
-
 
 }

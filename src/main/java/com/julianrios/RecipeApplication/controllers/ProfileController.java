@@ -1,17 +1,19 @@
 package com.julianrios.RecipeApplication.controllers;
 
 import com.julianrios.RecipeApplication.entities.Profile;
+import com.julianrios.RecipeApplication.entities.Recipe;
 import com.julianrios.RecipeApplication.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
 @RequestMapping("/profiles")
-@CrossOrigin()
+@CrossOrigin("*")
 public class ProfileController {
 
 
@@ -50,5 +52,10 @@ public class ProfileController {
     @PutMapping("/{id}")
     public ResponseEntity<Profile> updateProfile(@PathVariable("id") Integer id, @RequestBody Profile profile) {
         return ResponseEntity.ok(service.updateProfile(id, profile));
+    }
+
+    @GetMapping("{id}/recipes")
+    public ResponseEntity<List<Recipe>> getRecipeBook(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(service.getRecipeBook(id));
     }
 }

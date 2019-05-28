@@ -1,6 +1,7 @@
 package com.julianrios.RecipeApplication.services;
 
 import com.julianrios.RecipeApplication.entities.Profile;
+import com.julianrios.RecipeApplication.entities.Recipe;
 import com.julianrios.RecipeApplication.repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,9 @@ public class ProfileService {
     public Boolean deleteAllProfiles() {
         repo.deleteAll();
         return true;
+    }
+
+    public List<Recipe> getRecipeBook(Integer id) {
+        return repo.findById(id).get().getRecipeBook();
     }
 }
