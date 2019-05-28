@@ -20,7 +20,7 @@ public class RecipeService {
         this.repo = repo;
     }
 
-    // TODO allow user to manually create, get, and save recipes to a collection
+    // TODO allow user to save recipes to a collection
 
     public Recipe createRecipe(Recipe recipe) {
         return repo.save(recipe);
